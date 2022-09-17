@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:13.0
+    volumes:
+     - /var/lib/postgresql/12/main
+    env_file:
+      - ./.env
+  web:
+    build: .
+    restart: always
+    ports:
+     - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  nginx:
+    image: nginx:1.19.3
+    ports:
+     - "9200:9200"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app/static:/var/html/static/
+      - ./media:/var/html/media/
+    depends_on:
+      - web
