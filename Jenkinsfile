@@ -7,9 +7,13 @@ pipeline {
                 echo 'Building..'
             }
         }
-        withPythonEnv('python3') {
-            sh 'pip install pytest'
-            sh 'pytest mytest.py'
+        stage('Tests') {
+            steps {
+                withPythonEnv('python3') {
+                    sh 'pip install pytest'
+                    sh 'pytest mytest.py'
+                }
+            }
         }
         stage('Deploy') {
             steps {
