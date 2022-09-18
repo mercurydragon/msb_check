@@ -7,12 +7,9 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Test') {
-            sh '''
-                python -m pip install --upgrade pip
-                pip install flake8 pytest
-                ip install -r requirements.txt
-            '''
+        withPythonEnv('python3') {
+            sh 'pip install pytest'
+            sh 'pytest mytest.py'
         }
         stage('Deploy') {
             steps {
