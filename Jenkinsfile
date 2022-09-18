@@ -1,15 +1,26 @@
 pipeline {
     agent any
-
+    environment {
+        DJANGO_SETTINGS_MODULE = 'app.settings'
+        DJANGO_SECRET = credentials('DJANGO_SECRET')
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+                withPythonEnv('python3.8') {
+                    sh 'pip install -r requirements.txt'
+                    sh 'pip install pytest'
+                    sh '''DJANGO_SETTINGS_MODULE=app.settings python3.8 -m pytest || [[ $? -eq 1 ]]'''
+                }
             }
         }
-        stage('Test') {
+        stage('Tests') {
             steps {
-                echo 'Testing..'
+                withPythonEnv('python3.8') {
+                    sh 'printenv'
+                    sh 'pytest || [[ $? -eq 1 ]]'
+                }
             }
         }
         stage('Deploy') {
