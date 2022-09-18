@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Tests') {
             steps {
-                sh 'pip install pytest && pip install -r requirements.txt && python -m pytest || [[ $? -eq 1 ]]'
+                sh 'pip install pytest && pip install -r requirements.txt && python3 -m pytest || [[ $? -eq 1 ]]'
             }
         }
         stage('Deploy') {
