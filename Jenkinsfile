@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Tests') {
             steps {
-                sh 'pytest || [[ $? -eq 1 ]]'
+                sh 'pip install pytest && pytest || [[ $? -eq 1 ]]'
             }
         }
         stage('Deploy') {
