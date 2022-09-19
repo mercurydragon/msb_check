@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                withPythonEnv('/root/.pyenv/versions/3.8.14/bin') {
+                withPythonEnv('python3.8') {
                     sh 'pip install -r requirements.txt'
                 }
             }
