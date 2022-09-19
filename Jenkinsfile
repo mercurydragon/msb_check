@@ -8,7 +8,7 @@ pipeline {
                 withPythonEnv('python3.8') {
                     sh 'pip install -r requirements.txt'
                     sh 'pip install pytest'
-                    sh '''DJANGO_SETTINGS_MODULE=app.settings pytest || [[ $? -eq 1 ]]'''
+                    sh '''DJANGO_SETTINGS_MODULE=app.settings python3.8 -m pytest || [[ $? -eq 1 ]]'''
                 }
             }
         }
