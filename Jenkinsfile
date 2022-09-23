@@ -14,8 +14,12 @@ pipeline {
         }
         stage('Tests') {
             steps {
+                environment {
+                    DJANGO_SETTINGS_MODULE = 'app.settings'
+                    DJANGO_SECRET = credentials('DJANGO_SECRET')
+                }
                 withPythonEnv('python3.8') {
-                    sh '''DJANGO_SETTINGS_MODULE=app.settings pytest || [[ $? -eq 1 ]]'''
+                    sh '''pytest || [[ $? -eq 1 ]]'''
                 }
             }
         }
