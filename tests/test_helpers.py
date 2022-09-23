@@ -41,3 +41,5 @@ def test_prepare_params(value, expected):
 def test_prepare_params_error(value):
     with pytest.raises(AssertionError):
         assert MSBAPIHelper().prepare_params(value)
+        assert False
+
