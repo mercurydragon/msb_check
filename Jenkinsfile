@@ -5,8 +5,7 @@ pipeline {
         DJANGO_SECRET = credentials('DJANGO_SECRET')
         DB_ENGINE = 'django.db.backends.postgresql'
         DB_NAME = credentials('DB_NAME')
-        POSTGRES_USER = credentials('POSTGRES')
-        POSTGRES_PASSWORD = credentials('POSTGRES')
+        POSTGRES_CREDS = credentials('POSTGRES')
         DB_HOST = 'db'
         DB_PORT = '5432'
     }
