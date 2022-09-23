@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+        DJANGO_SETTINGS_MODULE = 'app.settings'
+        DJANGO_SECRET = credentials('DJANGO_SECRET')
+    }
     stages {
         stage('Build') {
             steps {
@@ -13,10 +16,6 @@ pipeline {
             }
         }
         stage('Tests') {
-            environment {
-                DJANGO_SETTINGS_MODULE = 'app.settings'
-                DJANGO_SECRET = credentials('DJANGO_SECRET')
-            }
             steps {
                 withPythonEnv('python3.8') {
                     sh 'printenv'
