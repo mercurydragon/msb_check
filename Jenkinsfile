@@ -17,7 +17,8 @@ pipeline {
         stage('Tests') {
             steps {
                 withPythonEnv('python3.8') {
-                    sh 'pytest || [[ $? -eq 1 ]]'
+                    sh 'printenv'
+                    sh 'python3.8 -m pytest || [[ $? -eq 1 ]]'
                 }
             }
         }
