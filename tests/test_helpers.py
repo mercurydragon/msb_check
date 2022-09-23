@@ -15,6 +15,7 @@ from tests.conftest import IS_MSB_API_RESPONSE, NOT_MSB_API_RESPONSE
     ),
 )
 def test_is_msb(response, status, expected):
+    assert False
     with requests_mock.Mocker() as mock_request:
         mock_request.post(settings.EXTERNAL_API_URL, json=response, status_code=status)
         assert MSBAPIHelper().is_msb({'tin': 123}) == expected
@@ -41,5 +42,4 @@ def test_prepare_params(value, expected):
 def test_prepare_params_error(value):
     with pytest.raises(AssertionError):
         assert MSBAPIHelper().prepare_params(value)
-        assert False
 
