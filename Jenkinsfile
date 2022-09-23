@@ -4,11 +4,11 @@ pipeline {
         DJANGO_SETTINGS_MODULE = 'app.settings'
         DJANGO_SECRET = credentials('DJANGO_SECRET')
         DB_ENGINE = 'django.db.backends.postgresql'
-        DB_NAME = credentials('POSTGRES_USR')
-        POSTGRES_USER=credentials('DB_NAME')
-        POSTGRES_PASSWORD=credentials('POSTGRES_PSW')
-        DB_HOST=credentials('db')
-        DB_PORT=credentials('5432')
+        DB_NAME = credentials('DB_NAME')
+        POSTGRES_USER = credentials('POSTGRES_USR')
+        POSTGRES_PASSWORD = credentials('POSTGRES_PSW')
+        DB_HOST = 'db'
+        DB_PORT = '5432'
     }
     stages {
         stage('Build') {
