@@ -22,7 +22,7 @@ services:
      - "9200:9200"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./app/static:/var/html/static/
+      - ./app/app/static:/var/html/static/
       - ./media:/var/html/media/
     depends_on:
       - web

@@ -11,7 +11,7 @@ pipeline {
                 withPythonEnv('python3.8') {
                     sh 'pip install -r requirements.txt'
                     sh 'pip install pytest'
-                    sh 'manage.py collectstatic --noinput'
+                    sh 'python3.8manage.py collectstatic --noinput'
                 }
             }
         }
