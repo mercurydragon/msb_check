@@ -37,8 +37,9 @@ pipeline {
                 sh 'echo "POSTGRES_CREDS_PSW=$POSTGRES_CREDS_PSW" >> .env'
                 sh 'echo "DB_HOST=db" >> .env'
                 sh 'echo "DB_PORT=5432" >> .env'
-
-                sh 'docker-compose up --build'
+                sh 'ls'
+                sh 'cat .env'
+//                 sh 'docker-compose up --build'
             }
         }
     }
