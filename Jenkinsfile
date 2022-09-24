@@ -40,7 +40,7 @@ pipeline {
                 sh 'echo "POSTGRES_PASSWORD=$POSTGRES_CREDS_PSW" >> .env'
                 sh 'echo "DB_HOST=db" >> .env'
                 sh 'echo "DB_PORT=5432" >> .env'
-                sh 'docker-compose stop'
+                sh 'docker-compose down'
                 sh 'docker-compose up --build -d'
             }
         }

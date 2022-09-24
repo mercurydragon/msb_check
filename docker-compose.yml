@@ -21,9 +21,6 @@ services:
       - ./.env
     networks:
       - app-network
-  web_migrations:
-    build: .
-    command: python manage.py migrate
   nginx:
     image: nginx:1.19.3
     ports:
