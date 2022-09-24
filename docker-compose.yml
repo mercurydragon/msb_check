@@ -1,5 +1,10 @@
 version: '3.3'
 
+volumes:
+  postgres_data:
+  static:
+  media:
+
 services:
   db:
     image: postgres:13.0
