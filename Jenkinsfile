@@ -17,7 +17,6 @@ pipeline {
                     sh 'pip install -r requirements.txt'
                     sh 'pip install pytest'
                     sh 'python3.8 manage.py collectstatic --noinput'
-                    sh 'python3.8 manage.py migrate'
                 }
             }
         }
