@@ -39,7 +39,7 @@ pipeline {
                 sh 'echo "DB_HOST=db" >> .env'
                 sh 'echo "DB_PORT=5432" >> .env'
                 sh 'docker-compose up --build -d'
-                sh 'docker-compose exec web python manage.py migrate'
+                sh 'docker-compose exec -T web python manage.py migrate'
             }
         }
     }
