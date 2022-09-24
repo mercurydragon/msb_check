@@ -29,6 +29,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'echo "DJANGO_SETTINGS_MODULE=app.settings" >> .env'
+                sh 'echo "DB_ENGINE=django.db.backends.postgresql" >> .env'
+                sh 'echo "DB_NAME=$DB_NAME" >> .env'
+                sh 'echo "POSTGRES_CREDS_USR=POSTGRES_CREDS_USR" >> .env'
+                sh 'echo "POSTGRES_CREDS_PSW=POSTGRES_CREDS_PSW" >> .env'
+                sh 'echo "DB_HOST=db" >> .env'
+                sh 'echo "DB_PORT=5432" >> .env'
+
                 sh 'docker-compose up --build'
             }
         }
