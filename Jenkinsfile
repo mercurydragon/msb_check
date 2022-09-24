@@ -38,9 +38,8 @@ pipeline {
                 sh 'echo "POSTGRES_CREDS_PSW=$POSTGRES_CREDS_PSW" >> .env'
                 sh 'echo "DB_HOST=db" >> .env'
                 sh 'echo "DB_PORT=5432" >> .env'
-                sh 'ls'
-                sh 'cat .env'
-                sh 'docker-compose up --build'
+                sh 'docker-compose up --build -d'
+                sh 'docker-compose exec web python manage.py migrate'
             }
         }
     }
