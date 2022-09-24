@@ -7,9 +7,9 @@ volumes:
 
 services:
   db:
-    image: postgres:14.0
+    image: postgres:13.0
     volumes:
-     - postgres_data:/var/lib/postgresql/data/
+     - postgres_data:/var/lib/postgresql/14/main
     env_file:
       - ./.env
     networks:
