@@ -29,6 +29,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'rm .env'
                 sh 'echo "DJANGO_SETTINGS_MODULE=app.settings" >> .env'
                 sh 'echo "DB_ENGINE=django.db.backends.postgresql" >> .env'
                 sh 'echo "DB_NAME=$DB_NAME" >> .env'
@@ -39,7 +40,7 @@ pipeline {
                 sh 'echo "DB_PORT=5432" >> .env'
                 sh 'ls'
                 sh 'cat .env'
-//                 sh 'docker-compose up --build'
+                sh 'docker-compose up --build'
             }
         }
     }
