@@ -15,6 +15,7 @@ pipeline {
                 withPythonEnv('python3.8') {
                     sh 'pip install -r requirements.txt'
                     sh 'pip install pytest'
+                    sh 'python3.8 manage.py collectstatic --noinput'
                 }
             }
         }
@@ -39,6 +40,10 @@ pipeline {
                 sh 'echo "DB_HOST=db" >> .env'
                 sh 'echo "DB_PORT=5432" >> .env'
                 sh 'echo "DJANGO_SECRET=$DJANGO_SECRET" >> .env'
+
+                sh 'docker-compose stop db'
+                sh 'docker-compose stop web'
+                sh 'docker-compose stop nginx'
 
                 sh 'docker-compose up --build -d'
             }
