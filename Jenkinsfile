@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DJANGO_SETTINGS_MODULE = 'app.settings'
-        DJANGO_SECRET = '123'
+        DJANGO_SECRET = credentials('DJANGO_SECRET_2')
     }
     stages {
         stage('Install req') {
