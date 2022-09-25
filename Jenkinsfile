@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DJANGO_SETTINGS_MODULE = 'app.settings'
+    }
     stages {
         stage('Install req') {
             steps {
