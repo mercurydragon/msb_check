@@ -40,9 +40,7 @@ pipeline {
                 sh 'echo "DB_PORT=5432" >> .env'
                 sh 'echo "DJANGO_SECRET=$DJANGO_SECRET" >> .env'
 
-                sh 'cat .env'
-
-                 sh 'docker-compose up --build'
+                sh 'docker-compose up --build -d'
             }
         }
     }
